@@ -1,0 +1,11 @@
+{
+    "hostInterfaces": {
+        "enp1s5": {
+            "gateway": "10.0.4.1",
+            "name": "enp1s5",
+            "prefix": "10.0.4.100/24"
+        }
+    },
+    "hostname": "endpoint01-iperf4",
+    "iptablesFile": ""
+}

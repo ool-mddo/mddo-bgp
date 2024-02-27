@@ -1,0 +1,39 @@
+---
+- hosts: localhost
+  gather_facts: false
+  become: yes
+  vars:
+    operation: create
+
+  tasks:
+    - name: create bridge
+      command:
+        cmd: "ip link add {{ item }} type bridge"
+      loop:
+        - sw1
+        - sw2
+        - sw3
+
+    - name: deploy containerlab
+      command:
+        cmd: "containerlab deploy --topo deploy-ospf-topo.crab.yml"
+      when: operation == 'create'
+
+    - name: enable bridge
+      command:
+        cmd: "ip link set dev {{ item }} up"
+      loop:
+        - sw1
+        - sw2
+        - sw3
+
+    - name: apply license to crpd
+      command:
+        cmd: "containerlab exec --topo deploy-ospf-topo.crab.yml --label clab-node-kind=juniper_crpd --cmd 'cli request system license add /tmp/license.key'"
+      when: operation == 'create'
+
+
+    - name: check license on crpd
+      command:
+        cmd: "containerlab exec --topo  deploy-ospf-topo.crab.yml --label clab-node-kind=juniper_crpd --cmd 'cli show system license'"
+      when: operation == 'create'

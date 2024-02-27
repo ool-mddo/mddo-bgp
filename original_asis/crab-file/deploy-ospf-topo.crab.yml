@@ -1,0 +1,57 @@
+name: mddo-lab-ospf
+topology:
+  nodes:
+    RT1:
+      kind: juniper_crpd
+      image: crpd:22.1R1.10
+      startup-config: ../configs/rt1.conf
+      binds:
+        - license.key:/tmp/license.key:ro
+    RT2:
+      kind: juniper_crpd
+      image: crpd:22.1R1.10
+      startup-config: ../configs/rt2.conf
+      binds:
+        - license.key:/tmp/license.key:ro
+    RT3:
+      kind: juniper_crpd
+      image: crpd:22.1R1.10
+      startup-config: ../configs/rt3.conf
+      binds:
+        - license.key:/tmp/license.key:ro
+    RT4:
+      kind: juniper_crpd
+      image: crpd:22.1R1.10
+      startup-config: ../configs/rt4.conf
+      binds:
+        - license.key:/tmp/license.key:ro
+    SERV1:
+      kind: juniper_crpd
+      image: crpd:22.1R1.10
+      startup-config: ../configs/serv1.conf
+    SERV2:
+      kind: juniper_crpd
+      image: crpd:22.1R1.10
+      startup-config: ../configs/serv2.conf
+    SW1:
+      kind: ceos
+      image: ceos-lab:4.27.2F
+      startup-config: ../configs/sw1.conf
+    SW2:
+      kind: ceos
+      image: ceos-lab:4.27.2F
+      startup-config: ../configs/sw2.conf
+    SW3:
+      kind: ceos
+      image: ceos-lab:4.27.2F
+      startup-config: ../configs/sw3.conf
+  links:
+    - endpoints: ["SERV1:eth1", "SW1:eth1"]
+    - endpoints: ["SW1:eth2", "RT1:eth1"]
+    - endpoints: ["RT1:eth2", "RT2:eth1"]
+    - endpoints: ["RT1:eth3", "RT3:eth1"]
+    - endpoints: ["RT2:eth2", "SW2:eth1"]
+    - endpoints: ["RT3:eth2", "SW2:eth2"]
+    - endpoints: ["SW2:eth3", "RT4:eth1"]
+    - endpoints: ["RT4:eth2", "SW3:eth1"]
+    - endpoints: ["SW3:eth2", "SERV2:eth1"]

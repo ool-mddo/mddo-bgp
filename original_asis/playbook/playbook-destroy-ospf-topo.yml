@@ -1,0 +1,20 @@
+---
+- hosts: localhost
+  gather_facts: false
+  become: yes
+  vars:
+    operation: delete
+
+  tasks:
+    - name: destroy containerlab
+      command:
+        cmd: "containerlab destroy --topo deploy-ospf-topo.crab.yml"
+      when: operation == 'delete'
+
+    - name: delete bridge
+      command:
+        cmd: "ip link del {{ item }}"
+      loop:
+        - sw1
+        - sw2
+        - sw3

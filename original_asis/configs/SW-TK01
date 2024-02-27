@@ -1,0 +1,70 @@
+! Command: show running-config
+! device: SW-TK01 (vEOS-lab, EOS-4.27.0F)
+!
+! boot system flash:/vEOS-lab.swi
+!
+no aaa root
+!
+username vrnetlab role network-admin secret sha512 $6$0Zt72JpXs.vr59Kw$vM9yXFc./gPSwzD.LSVLQAFRfQZCE5qclAAlEiNZqiXxLzOa9aQpLK1myVrnUBXXcs.WooZmHW7y3rk11dDzH1
+!
+transceiver qsfp default-mode 4x10G
+!
+service routing protocols model ribd
+!
+hostname SW-TK01
+!
+spanning-tree mode mstp
+!
+management api http-commands
+   protocol unix-socket
+   no shutdown
+!
+interface Ethernet1
+   description to_Core-TK01_ge-0/0/1
+!
+interface Ethernet2
+   description to_Core-TK02_ge-0/0/1
+!
+interface Ethernet3
+   description to_Edge-TK01_ge-0/0/0
+!
+interface Ethernet4
+   description to_Edge-TK02_ge-0/0/0
+!
+interface Ethernet5
+   description to_Edge-TK03_GigabitEthernet0/0/0/0
+!
+interface Ethernet6
+!
+interface Ethernet7
+!
+interface Ethernet8
+!
+interface Ethernet9
+!
+interface Ethernet10
+!
+interface Ethernet11
+!
+interface Ethernet12
+!
+interface Ethernet13
+!
+interface Ethernet14
+!
+interface Ethernet15
+!
+interface Ethernet16
+!
+interface Ethernet17
+!
+interface Ethernet18
+!
+interface Ethernet19
+!
+interface Management1
+   ip address 10.0.0.15/24
+!
+no ip routing
+!
+end

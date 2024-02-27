@@ -1,0 +1,11 @@
+{
+    "hostInterfaces": {
+        "ens2": {
+            "gateway": "10.0.1.1",
+            "name": "ens2",
+            "prefix": "10.0.1.100/24"
+        }
+    },
+    "hostname": "endpoint01-iperf1",
+    "iptablesFile": ""
+}

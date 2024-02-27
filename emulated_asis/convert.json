@@ -1,0 +1,326 @@
+[
+  {
+    "node": {
+      "original": "Seg_192.168.0.0/30",
+      "clab": "Seg-192.168.0.0-30"
+    },
+    "iflist": [
+      {
+        "original": "regiona-rt1_ge-0/0/0.0",
+        "clab": "Ethernet1",
+        "ifDescr": "to_regiona-rt1_eth1.0"
+      },
+      {
+        "original": "regiona-rt2_ge-0/0/0.0",
+        "clab": "Ethernet2",
+        "ifDescr": "to_regiona-rt2_eth1.0"
+      }
+    ]
+  },
+  {
+    "node": {
+      "original": "regiona-rt1",
+      "clab": "regiona-rt1"
+    },
+    "iflist": [
+      {
+        "original": "ge-0/0/0.0",
+        "clab": "eth1.0",
+        "ifDescr": "to_Seg-192.168.0.0-30_Ethernet1"
+      },
+      {
+        "original": "ge-0/0/1.0",
+        "clab": "eth2.0",
+        "ifDescr": "to_Seg-172.16.0.0-30_Ethernet1"
+      },
+      {
+        "original": "ge-0/0/2.0",
+        "clab": "eth3.0",
+        "ifDescr": "to_Seg-172.16.1.0-30_Ethernet1"
+      }
+    ]
+  },
+  {
+    "node": {
+      "original": "regiona-rt2",
+      "clab": "regiona-rt2"
+    },
+    "iflist": [
+      {
+        "original": "ge-0/0/0.0",
+        "clab": "eth1.0",
+        "ifDescr": "to_Seg-192.168.0.0-30_Ethernet2"
+      },
+      {
+        "original": "ge-0/0/1.0",
+        "clab": "eth2.0",
+        "ifDescr": "to_Seg-192.168.100.0-24_Ethernet1"
+      }
+    ]
+  },
+  {
+    "node": {
+      "original": "Seg_172.16.0.0/30",
+      "clab": "Seg-172.16.0.0-30"
+    },
+    "iflist": [
+      {
+        "original": "regiona-rt1_ge-0/0/1.0",
+        "clab": "Ethernet1",
+        "ifDescr": "to_regiona-rt1_eth2.0"
+      },
+      {
+        "original": "regionb-rt1_Ethernet2",
+        "clab": "Ethernet2",
+        "ifDescr": "to_regionb-rt1_eth1.0"
+      }
+    ]
+  },
+  {
+    "node": {
+      "original": "regionb-rt1",
+      "clab": "regionb-rt1"
+    },
+    "iflist": [
+      {
+        "original": "Ethernet2",
+        "clab": "eth1.0",
+        "ifDescr": "to_Seg-172.16.0.0-30_Ethernet2"
+      },
+      {
+        "original": "Ethernet3",
+        "clab": "eth2.0",
+        "ifDescr": "to_Seg-172.16.2.0-30_Ethernet2"
+      },
+      {
+        "original": "Ethernet1",
+        "clab": "eth3.0",
+        "ifDescr": "to_Seg-192.168.1.0-30_Ethernet1"
+      }
+    ]
+  },
+  {
+    "node": {
+      "original": "Seg_172.16.1.0/30",
+      "clab": "Seg-172.16.1.0-30"
+    },
+    "iflist": [
+      {
+        "original": "regiona-rt1_ge-0/0/2.0",
+        "clab": "Ethernet1",
+        "ifDescr": "to_regiona-rt1_eth3.0"
+      },
+      {
+        "original": "regionc-rt1_GigabitEthernet0/0/0/1",
+        "clab": "Ethernet2",
+        "ifDescr": "to_regionc-rt1_eth1.0"
+      }
+    ]
+  },
+  {
+    "node": {
+      "original": "regionc-rt1",
+      "clab": "regionc-rt1"
+    },
+    "iflist": [
+      {
+        "original": "GigabitEthernet0/0/0/1",
+        "clab": "eth1.0",
+        "ifDescr": "to_Seg-172.16.1.0-30_Ethernet2"
+      },
+      {
+        "original": "GigabitEthernet0/0/0/0",
+        "clab": "eth2.0",
+        "ifDescr": "to_Seg-192.168.2.0-30_Ethernet1"
+      },
+      {
+        "original": "GigabitEthernet0/0/0/2",
+        "clab": "eth3.0",
+        "ifDescr": "to_Seg-172.16.2.0-30_Ethernet1"
+      }
+    ]
+  },
+  {
+    "node": {
+      "original": "Seg_192.168.2.0/30",
+      "clab": "Seg-192.168.2.0-30"
+    },
+    "iflist": [
+      {
+        "original": "regionc-rt1_GigabitEthernet0/0/0/0",
+        "clab": "Ethernet1",
+        "ifDescr": "to_regionc-rt1_eth2.0"
+      },
+      {
+        "original": "regionc-rt2_GigabitEthernet0/0/0/0",
+        "clab": "Ethernet2",
+        "ifDescr": "to_regionc-rt2_eth1.0"
+      }
+    ]
+  },
+  {
+    "node": {
+      "original": "regionc-rt2",
+      "clab": "regionc-rt2"
+    },
+    "iflist": [
+      {
+        "original": "GigabitEthernet0/0/0/0",
+        "clab": "eth1.0",
+        "ifDescr": "to_Seg-192.168.2.0-30_Ethernet2"
+      },
+      {
+        "original": "GigabitEthernet0/0/0/1",
+        "clab": "eth2.0",
+        "ifDescr": "to_Seg-192.168.100.0-25_Ethernet1"
+      }
+    ]
+  },
+  {
+    "node": {
+      "original": "Seg_172.16.2.0/30",
+      "clab": "Seg-172.16.2.0-30"
+    },
+    "iflist": [
+      {
+        "original": "regionc-rt1_GigabitEthernet0/0/0/2",
+        "clab": "Ethernet1",
+        "ifDescr": "to_regionc-rt1_eth3.0"
+      },
+      {
+        "original": "regionb-rt1_Ethernet3",
+        "clab": "Ethernet2",
+        "ifDescr": "to_regionb-rt1_eth2.0"
+      }
+    ]
+  },
+  {
+    "node": {
+      "original": "Seg_192.168.100.0/25",
+      "clab": "Seg-192.168.100.0-25"
+    },
+    "iflist": [
+      {
+        "original": "regionc-rt2_GigabitEthernet0/0/0/1",
+        "clab": "Ethernet1",
+        "ifDescr": "to_regionc-rt2_eth2.0"
+      },
+      {
+        "original": "regionc-svr01_ens2",
+        "clab": "Ethernet2",
+        "ifDescr": "to_regionc-svr01_eth1.0"
+      }
+    ]
+  },
+  {
+    "node": {
+      "original": "regionc-svr01",
+      "clab": "regionc-svr01"
+    },
+    "iflist": [
+      {
+        "original": "ens2",
+        "clab": "eth1.0",
+        "ifDescr": "to_Seg-192.168.100.0-25_Ethernet2"
+      }
+    ]
+  },
+  {
+    "node": {
+      "original": "Seg_192.168.1.0/30",
+      "clab": "Seg-192.168.1.0-30"
+    },
+    "iflist": [
+      {
+        "original": "regionb-rt1_Ethernet1",
+        "clab": "Ethernet1",
+        "ifDescr": "to_regionb-rt1_eth3.0"
+      },
+      {
+        "original": "regionb-rt2_Ethernet1",
+        "clab": "Ethernet2",
+        "ifDescr": "to_regionb-rt2_eth1.0"
+      }
+    ]
+  },
+  {
+    "node": {
+      "original": "regionb-rt2",
+      "clab": "regionb-rt2"
+    },
+    "iflist": [
+      {
+        "original": "Ethernet1",
+        "clab": "eth1.0",
+        "ifDescr": "to_Seg-192.168.1.0-30_Ethernet2"
+      },
+      {
+        "original": "Ethernet2",
+        "clab": "eth2.0",
+        "ifDescr": "to_Seg-192.168.254.0-24_Ethernet1"
+      }
+    ]
+  },
+  {
+    "node": {
+      "original": "Seg_192.168.254.0/24",
+      "clab": "Seg-192.168.254.0-24"
+    },
+    "iflist": [
+      {
+        "original": "regionb-rt2_Ethernet2",
+        "clab": "Ethernet1",
+        "ifDescr": "to_regionb-rt2_eth2.0"
+      },
+      {
+        "original": "regionb-svr01_ens2",
+        "clab": "Ethernet2",
+        "ifDescr": "to_regionb-svr01_eth1.0"
+      }
+    ]
+  },
+  {
+    "node": {
+      "original": "regionb-svr01",
+      "clab": "regionb-svr01"
+    },
+    "iflist": [
+      {
+        "original": "ens2",
+        "clab": "eth1.0",
+        "ifDescr": "to_Seg-192.168.254.0-24_Ethernet2"
+      }
+    ]
+  },
+  {
+    "node": {
+      "original": "Seg_192.168.100.0/24",
+      "clab": "Seg-192.168.100.0-24"
+    },
+    "iflist": [
+      {
+        "original": "regiona-rt2_ge-0/0/1.0",
+        "clab": "Ethernet1",
+        "ifDescr": "to_regiona-rt2_eth2.0"
+      },
+      {
+        "original": "regiona-svr02_ens2",
+        "clab": "Ethernet2",
+        "ifDescr": "to_regiona-svr02_eth1.0"
+      }
+    ]
+  },
+  {
+    "node": {
+      "original": "regiona-svr02",
+      "clab": "regiona-svr02"
+    },
+    "iflist": [
+      {
+        "original": "ens2",
+        "clab": "eth1.0",
+        "ifDescr": "to_Seg-192.168.100.0-24_Ethernet2"
+      }
+    ]
+  }
+]

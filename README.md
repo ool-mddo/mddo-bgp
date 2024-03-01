@@ -16,7 +16,7 @@ ISPのバックボーンネットワークを模擬したサンプルコンフ�
   * external_as_topology/ : デモ用, 外部ASを保管するためのスクリプト(外部ASトポロジ生成スクリプト)
   * flowdata/ : デモ用, PNIフローデータ
 
-## 外部トポロジ生成スクリプト
+## 外部ASトポロジ生成スクリプト
 
 playground v1.5.2 時点では以下の仕様になっています。
 * [netomox-exp](https://github.com/ool-mddo/netomox-exp) は、外部ASトポロジ取得APIが呼ばれたら `<snapshot>/external_as_topology/main.rb` をロードして実行する (netomox-exp の REST API 経由で実行される)

@@ -18,7 +18,7 @@ ISPのバックボーンネットワークを模擬したサンプルコンフ�
 
 ## 外部ASトポロジ生成スクリプト
 
-playground v1.5.2 時点では以下の仕様になっています。
+playground/v1.5.2 (mddo-bgp/v0.1.0) 時点では以下の仕様になっています。
 * [netomox-exp](https://github.com/ool-mddo/netomox-exp) は、外部ASトポロジ取得APIが呼ばれたら `<snapshot>/external_as_topology/main.rb` をロードして実行する (netomox-exp の REST API 経由で実行される)
 * `external_as_topology/main.rb` は外部ASトポロジデータ(RFC8345 JSON)を標準出力に出力する
 * netomox-exp は出力されたトポロジデータをAPIの応答として返す

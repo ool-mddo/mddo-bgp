@@ -36,17 +36,17 @@ def register_bgp_as(nws)
         end
       end
       node 'as65550' do
-        attribute({ as_number: 65_550 })        
+        attribute({ as_number: 65_550 })
         support %w[bgp_proc AS65550-1]
         term_point 'peer_172.16.0.6' do
           attribute({ description: 'from TBD to TBD' })
           support %w[bgp_proc AS65550-1 peer_172.16.0.6 ]
-        end        
+        end
         support %w[bgp_proc AS65550-1]
         term_point 'peer_172.16.1.18' do
           attribute({ description: 'from TBD to TBD' })
           support %w[bgp_proc AS65550-1 peer_172.16.1.18 ]
-        end        
+        end
         support %w[bgp_proc AS65550-2]
         term_point 'peer_172.16.1.10' do
           attribute({ description: 'from TBD to TBD' })
@@ -54,17 +54,17 @@ def register_bgp_as(nws)
         end
       end
       node 'as65520' do
-        attribute({ as_number: 65_520 })        
+        attribute({ as_number: 65_520 })
         support %w[bgp_proc AS65520-1]
         term_point 'peer_192.168.0.9' do
           attribute({ description: 'from TBD to TBD' })
           support %w[bgp_proc AS65520-1 peer_192.168.0.9 ]
-        end        
+        end
         support %w[bgp_proc AS65520-2]
         term_point 'peer_192.168.0.13' do
           attribute({ description: 'from TBD to TBD' })
           support %w[bgp_proc AS65520-2 peer_192.168.0.13 ]
-        end        
+        end
         support %w[bgp_proc AS65520-3]
         term_point 'peer_192.168.0.17' do
           attribute({ description: 'from TBD to TBD' })

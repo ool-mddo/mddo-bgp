@@ -531,17 +531,6 @@ router bgp 65500
  bgp router-id 192.168.255.7
  address-family ipv4 unicast
  !
- neighbor 172.16.1.17
-  remote-as 65550
-  address-family ipv4 unicast
-   send-community-ebgp
-   route-policy as65550-peer-in1-tyo-ipv4 in
-   route-policy as65550-peer-out2-tyo-ipv4 out
-   next-hop-self
-   remove-private-AS
-   soft-reconfiguration inbound always
-  !
- !
  neighbor 192.168.0.18
   remote-as 65520
   timers 10 30

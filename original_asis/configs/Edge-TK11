@@ -3,30 +3,21 @@ Building configuration...
 !! IOS XR Configuration 5.3.2
 !! Last configuration change at Tue Oct 31 04:30:24 2023 by vrnetlab
 !
-hostname Edge-TK02
+hostname Edge-TK11
 interface Loopback0
- ipv4 address 192.168.255.2 255.255.255.255
+ ipv4 address 192.168.255.11 255.255.255.255
 !
 interface MgmtEth0/0/CPU0/0
  ipv4 address 10.0.0.15 255.255.255.0
  shutdown
 !
 interface GigabitEthernet0/0/0/0
- description to_SW-TK01_Ethernet4
- ipv4 address 192.168.1.2 255.255.255.0
+ description to_SW-TK01_Ethernet6
+ ipv4 address 192.168.1.11 255.255.255.0
 !
 interface GigabitEthernet0/0/0/1
- description to_shared_curcuit
-!
-interface GigabitEthernet0/0/0/1.100
- description to_PNI01-2
- ipv4 address 172.16.0.10 255.255.255.252
- encapsulation dot1q 100
-!
-interface GigabitEthernet0/0/0/1.200
- description to_PNI02-1
- ipv4 address 172.16.1.10 255.255.255.252
- encapsulation dot1q 200
+ description to_POI-East_Ethernet7
+ ipv4 address 192.168.0.17 255.255.255.252
 !
 interface GigabitEthernet0/0/0/2
  shutdown
@@ -406,6 +397,10 @@ interface GigabitEthernet0/0/0/126
 interface GigabitEthernet0/0/0/127
  shutdown
 !
+prefix-set as65550-advd
+  10.100.0.0/16
+end-set
+!
 prefix-set default-ipv4
   0.0.0.0/0
 end-set
@@ -420,10 +415,6 @@ end-set
 !
 as-path-set as65550-origin
   ios-regex '^(65550_)+$'
-end-set
-!
-as-path-set as65560-origin
-  ios-regex '^(65560_)+$'
 end-set
 !
 as-path-set aspath-longer200
@@ -481,60 +472,6 @@ route-policy reject-out-ipv4
   pass
 end-policy
 !
-route-policy as65550-peer-in1-tyo-ipv4
-  apply reject-in-ipv4
-  if as-path in as65550-origin then
-    set local-preference 300
-    set med 100
-    set community peer
-    done
-  endif
-  if as-path in any then
-    set local-preference 210
-    set med 100
-    set community peer
-    done
-  endif
-  drop
-end-policy
-!
-route-policy as65550-peer-out1-tyo-ipv4
-  apply reject-out-ipv4
-  if community matches-any aggregate then
-    set med 100
-    delete community in any
-    done
-  endif
-  drop
-end-policy
-!
-route-policy as65560-peer-in1-tyo-ipv4
-  apply reject-in-ipv4
-  if as-path in as65560-origin then
-    set local-preference 300
-    set med 100
-    set community peer
-    done
-  endif
-  if as-path in any then
-    set local-preference 210
-    set med 100
-    set community peer
-    done
-  endif
-  drop
-end-policy
-!
-route-policy as65560-peer-out1-tyo-ipv4
-  apply reject-out-ipv4
-  if community matches-any aggregate then
-    set med 100
-    delete community in any
-    done
-  endif
-  drop
-end-policy
-!
 router static
  address-family ipv4 unicast
   172.31.255.1/32 Null0
@@ -553,30 +490,16 @@ router ospf 65500
 router bgp 65500
  bgp confederation identifier 65518
  bgp confederation peers 65500
- bgp router-id 192.168.255.7
+ bgp router-id 192.168.255.11
  address-family ipv4 unicast
  !
- neighbor 172.16.0.9
-  remote-as 65550
+ neighbor 192.168.0.18
+  remote-as 65520
   timers 10 30
-  description "AS65550_PNI1-2_ipv4"
+  description "POI-East"
   address-family ipv4 unicast
    send-community-ebgp
-   route-policy as65550-peer-in1-tyo-ipv4 in
-   route-policy as65550-peer-out1-tyo-ipv4 out
-   next-hop-self
-   remove-private-AS
-   soft-reconfiguration inbound always
-  !
- !
- neighbor 172.16.1.9
-  remote-as 65560
-  timers 10 30
-  description "AS65560_PNI2-1_ipv4"
-  address-family ipv4 unicast
-   send-community-ebgp
-   route-policy as65560-peer-in1-tyo-ipv4 in
-   route-policy as65560-peer-out1-tyo-ipv4 out
+   route-policy POI-East_in in
    next-hop-self
    remove-private-AS
    soft-reconfiguration inbound always

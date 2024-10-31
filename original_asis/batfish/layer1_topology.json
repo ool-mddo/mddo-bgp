@@ -2,122 +2,122 @@
   "edges": [
     {
       "node1": {
-        "hostname": "core-tk01",
-        "interfaceName": "ge-0/0/1"
+        "hostname": "SW-TK01",
+        "interfaceName": "Ethernet1"
       },
       "node2": {
-        "hostname": "sw-tk01",
+        "hostname": "Core-TK01",
+        "interfaceName": "ge-0/0/0"
+      }
+    },
+    {
+      "node1": {
+        "hostname": "Core-TK01",
+        "interfaceName": "ge-0/0/0"
+      },
+      "node2": {
+        "hostname": "SW-TK01",
         "interfaceName": "Ethernet1"
       }
     },
     {
       "node1": {
-        "hostname": "sw-tk01",
-        "interfaceName": "Ethernet1"
-      },
-      "node2": {
-        "hostname": "core-tk01",
-        "interfaceName": "ge-0/0/1"
-      }
-    },
-    {
-      "node1": {
-        "hostname": "sw-tk01",
+        "hostname": "SW-TK01",
         "interfaceName": "Ethernet2"
       },
       "node2": {
-        "hostname": "core-tk02",
-        "interfaceName": "ge-0/0/1"
+        "hostname": "Core-TK02",
+        "interfaceName": "ge-0/0/0"
       }
     },
     {
       "node1": {
-        "hostname": "core-tk02",
-        "interfaceName": "ge-0/0/1"
+        "hostname": "Core-TK02",
+        "interfaceName": "ge-0/0/0"
       },
       "node2": {
-        "hostname": "sw-tk01",
+        "hostname": "SW-TK01",
         "interfaceName": "Ethernet2"
       }
     },
     {
       "node1": {
-        "hostname": "sw-tk01",
+        "hostname": "SW-TK01",
         "interfaceName": "Ethernet3"
       },
       "node2": {
-        "hostname": "edge-tk01",
+        "hostname": "Edge-TK01",
         "interfaceName": "ge-0/0/0"
       }
     },
     {
       "node1": {
-        "hostname": "edge-tk01",
+        "hostname": "Edge-TK01",
         "interfaceName": "ge-0/0/0"
       },
       "node2": {
-        "hostname": "sw-tk01",
+        "hostname": "SW-TK01",
         "interfaceName": "Ethernet3"
       }
     },
     {
       "node1": {
-        "hostname": "sw-tk01",
+        "hostname": "SW-TK01",
         "interfaceName": "Ethernet4"
       },
       "node2": {
-        "hostname": "edge-tk02",
-        "interfaceName": "ge-0/0/0"
-      }
-    },
-    {
-      "node1": {
-        "hostname": "edge-tk02",
-        "interfaceName": "ge-0/0/0"
-      },
-      "node2": {
-        "hostname": "sw-tk01",
-        "interfaceName": "Ethernet4"
-      }
-    },
-    {
-      "node1": {
-        "hostname": "sw-tk01",
-        "interfaceName": "Ethernet5"
-      },
-      "node2": {
-        "hostname": "edge-tk03",
+        "hostname": "Edge-TK02",
         "interfaceName": "GigabitEthernet0/0/0/0"
       }
     },
     {
       "node1": {
-        "hostname": "edge-tk03",
+        "hostname": "Edge-TK02",
         "interfaceName": "GigabitEthernet0/0/0/0"
       },
       "node2": {
-        "hostname": "sw-tk01",
+        "hostname": "SW-TK01",
+        "interfaceName": "Ethernet4"
+      }
+    },
+    {
+      "node1": {
+        "hostname": "SW-TK01",
+        "interfaceName": "Ethernet5"
+      },
+      "node2": {
+        "hostname": "Edge-TK03",
+        "interfaceName": "ge-0/0/0"
+      }
+    },
+    {
+      "node1": {
+        "hostname": "Edge-TK03",
+        "interfaceName": "ge-0/0/0"
+      },
+      "node2": {
+        "hostname": "SW-TK01",
         "interfaceName": "Ethernet5"
       }
     },
     {
       "node1": {
-        "hostname": "edge-tk02",
-        "interfaceName": "ge-0/0/2"
+        "hostname": "SW-TK01",
+        "interfaceName": "Ethernet6"
       },
       "node2": {
-        "hostname": "edge-tk01",
-        "interfaceName": "ge-0/0/2"
+        "hostname": "Edge-TK03",
+        "interfaceName": "ge-0/0/0"
       }
     },
     {
       "node1": {
-        "hostname": "edge-tk01",
-        "interfaceName": "ge-0/0/2"
+        "hostname": "Edge-TK03",
+        "interfaceName": "ge-0/0/0"
       },
       "node2": {
-        "hostname": "edge-tk02",
-        "interfaceName": "ge-0/0/2"
+        "hostname": "SW-TK01",
+        "interfaceName": "Ethernet6"
       }
     }
   ]

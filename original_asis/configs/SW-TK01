@@ -20,21 +20,22 @@ management api http-commands
    no shutdown
 !
 interface Ethernet1
-   description to_Core-TK01_ge-0/0/1
+   description to_Core-TK01_ge-0/0/0
 !
 interface Ethernet2
-   description to_Core-TK02_ge-0/0/1
+   description to_Core-TK02_ge-0/0/0
 !
 interface Ethernet3
    description to_Edge-TK01_ge-0/0/0
 !
 interface Ethernet4
-   description to_Edge-TK02_ge-0/0/0
+   description to_Edge-TK02_GigabitEthernet0/0/0/0
 !
 interface Ethernet5
-   description to_Edge-TK03_GigabitEthernet0/0/0/0
+   description to_Edge-TK03_ge-0/0/0
 !
 interface Ethernet6
+   description to_Edge-TK11_GigabitEthernet0/0/0/0
 !
 interface Ethernet7
 !

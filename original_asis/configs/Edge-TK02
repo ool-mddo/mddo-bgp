@@ -541,7 +541,7 @@ router static
  !
 !
 router ospf 65500
- area 0.0.0.10
+ area 0.0.0.0
   interface Loopback0
    cost 1
   !

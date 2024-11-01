@@ -414,6 +414,20 @@ prefix-set longer24-ipv4
   0.0.0.0/0 ge 25
 end-set
 !
+prefix-set as65550-advd-ipv4
+  10.100.0.0/16
+  10.110.0.0/20
+  10.120.0.0/17
+  10.130.0.0/21
+end-set
+!
+prefix-set as65560-advd-ipv4
+  10.100.0.0/16
+  10.110.0.0/20
+  10.120.0.0/17
+  10.130.0.0/21
+end-set
+!
 as-path-set any
   ios-regex '.*'
 end-set
@@ -500,7 +514,7 @@ end-policy
 !
 route-policy as65550-peer-out1-tyo-ipv4
   apply reject-out-ipv4
-  if community matches-any aggregate then
+  if community matches-any aggregate and destination in as65550-advd-ipv4 then
     set med 100
     delete community in any
     done
@@ -527,7 +541,7 @@ end-policy
 !
 route-policy as65560-peer-out1-tyo-ipv4
   apply reject-out-ipv4
-  if community matches-any aggregate then
+  if community matches-any aggregate and destination in as65560-advd-ipv4 then
     set med 100
     delete community in any
     done

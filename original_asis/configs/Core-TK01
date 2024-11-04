@@ -19,7 +19,7 @@ system {
         netconf {
             ssh;
         }
-    }                                   
+    }
     syslog {
         user * {
             any emergency;
@@ -42,32 +42,24 @@ chassis {
 }
 interfaces {
     ge-0/0/0 {
-        description to_Core-OS01_ge-0/0/0;
-        unit 0 {
-            family inet {
-                address 192.168.0.1/30;
-            }
-        }
-    }
-    ge-0/0/1 {
         description to_SW-TK01_Ethernet1;
         unit 0 {
             family inet {
-                address 192.168.1.1/24;
+                address 192.168.1.101/24;
             }
         }
     }
     fxp0 {
         unit 0 {
             family inet {
-                address 10.0.0.15/24;
+                address 10.0.0.101/24;
             }
         }
     }
     lo0 {
-        unit 0 {                        
+        unit 0 {
             family inet {
-                address 192.168.255.1/32;
+                address 192.168.255.101/32;
             }
         }
     }
@@ -83,48 +75,51 @@ routing-options {
             route 0.0.0.0/0 discard;
         }
     }
-    router-id 192.168.255.1;
+    router-id 192.168.255.101;
     autonomous-system 65500;
     confederation 65518 members 65500;
 }
 protocols {
-    bgp {                               
+    bgp {
         group INT {
             type internal;
-            local-address 192.168.255.1;
+            local-address 192.168.255.101;
             family inet {
                 unicast;
             }
             export ipv4-core;
-            neighbor 192.168.255.2 {
+            neighbor 192.168.255.102 {
                 description Core-TK02;
                 authentication-key "$9$JWGi.TQnAtOfT"; ## SECRET-DATA
             }
         }
         group Edge-TK {
             type internal;
-            local-address 192.168.255.1;
+            local-address 192.168.255.101;
             family inet {
                 unicast;
             }
             authentication-key "$9$AOr0pBErlMx7VSr"; ## SECRET-DATA
             export ipv4-full;
-            cluster 192.168.255.1;
-            neighbor 192.168.255.5 {
-                description Edge-TK01;  
+            cluster 192.168.255.101;
+            neighbor 192.168.255.1 {
+                description Edge-TK01;
             }
-            neighbor 192.168.255.6 {
+            neighbor 192.168.255.2 {
                 description Edge-TK02;
             }
-            neighbor 192.168.255.7 {
+            neighbor 192.168.255.3 {
                 description Edge-TK03;
+            }
+            neighbor 192.168.255.11 {
+                description Edge-TK11;
             }
         }
     }
     ospf {
-        area 0.0.0.10 {
+        area 0.0.0.0 {
             interface lo0.0;
-            interface ge-0/0/1.0;
+            interface ge-0/0/0.0;
         }
     }
 }
@@ -134,7 +129,7 @@ policy-options {
             from protocol bgp;
             then accept;
         }
-        term aggregate-static {         
+        term aggregate-static {
             from {
                 protocol static;
                 rib inet.0;
@@ -157,7 +152,7 @@ policy-options {
             from protocol bgp;
             then accept;
         }
-        term aggregate-static {         
+        term aggregate-static {
             from {
                 protocol static;
                 rib inet.0;
@@ -180,7 +175,7 @@ policy-options {
                 route-filter 0.0.0.0/0 exact;
             }
             then {
-                next-hop 172.31.255.1;  
+                next-hop 172.31.255.1;
                 accept;
             }
         }

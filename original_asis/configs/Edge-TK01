@@ -29,7 +29,7 @@ system {
             authorization info;
         }
         file interactive-commands {
-            interactive-commands any;   
+            interactive-commands any;
         }
     }
 }
@@ -45,29 +45,13 @@ interfaces {
         description SW-TK01_Eth3;
         unit 0 {
             family inet {
-                address 192.168.1.3/24;
+                address 192.168.1.1/24;
             }
         }
     }
     ge-0/0/1 {
-        description POI-East_Eth1;
         unit 0 {
-            family inet {
-                address 192.168.0.9/30;
-            }
-        }
-    }
-    ge-0/0/2 {
-        description to_Edge-TK02_ge-0/0/2;
-        unit 0 {
-            family inet {               
-                address 172.16.255.1/30;
-            }
-        }
-    }
-    ge-0/0/3 {
-        unit 0 {
-            description to_PNI01_Ethernet1;
+            description to_PNI01-1;
             family inet {
                 address 172.16.0.6/30;
             }
@@ -83,7 +67,7 @@ interfaces {
     lo0 {
         unit 0 {
             family inet {
-                address 192.168.255.5/32;
+                address 192.168.255.1/32;
             }
         }
     }
@@ -99,30 +83,6 @@ routing-options {
 }
 protocols {
     bgp {
-        group INT {
-            type internal;
-            description RR;
-            local-address 192.168.255.5;
-            family inet {
-                unicast;
-            }
-            export ibgp-export;
-            neighbor 192.168.255.1 {
-                description Core-TK01;
-                authentication-key "$9$0Y5eBEyvMXdVYev"; ## SECRET-DATA
-            }
-            neighbor 192.168.255.2 {
-                description Core-TK02;
-                authentication-key "$9$LOtxdsoaUkqfgo"; ## SECRET-DATA
-            }
-        }
-        group POI-East {
-            type external;
-            peer-as 65520;
-            neighbor 192.168.0.10 {
-                import as65520-peer-in1-tyo-ipv4;
-            }
-        }                               
         group PNI {
             type external;
             neighbor 172.16.0.5 {
@@ -141,19 +101,33 @@ protocols {
                 peer-as 65550;
             }
         }
+        group INT {
+            type internal;
+            description RR;
+            local-address 192.168.255.1;
+            family inet {
+                unicast;
+            }
+            export ibgp-export;
+            neighbor 192.168.255.101 {
+                description Core-TK01;
+                authentication-key "$9$0Y5eBEyvMXdVYev"; ## SECRET-DATA
+            }
+            neighbor 192.168.255.102 {
+                description Core-TK02;
+                authentication-key "$9$LOtxdsoaUkqfgo"; ## SECRET-DATA
+            }
+        }
     }
     ospf {
         area 0.0.0.0 {
-            interface ge-0/0/2.0;
-        }
-        area 0.0.0.10 {
             interface ge-0/0/0.0;
             interface lo0.0;
         }
     }
 }
 policy-options {
-    prefix-list default-ipv4 {          
+    prefix-list default-ipv4 {
         0.0.0.0/0;
     }
     prefix-list aggregated-ipv4 {
@@ -168,16 +142,6 @@ policy-options {
         10.120.0.0/17;
         10.130.0.0/21;
     }
-    policy-statement as65520-peer-in1-tyo-ipv4 {
-        term 20 {
-            then {
-                metric 100;
-                local-preference 300;
-                community set poi;
-                accept;
-            }
-        }
-    }
     policy-statement as65550-peer-in1-tyo-ipv4 {
         term 10 {
             from policy reject-in-rule-ipv4;
@@ -186,7 +150,7 @@ policy-options {
         term 20 {
             from as-path-group as65550-origin;
             then {
-                metric 100;             
+                metric 100;
                 local-preference 300;
                 community set peer;
                 accept;
@@ -217,7 +181,7 @@ policy-options {
         }
         term 10 {
             from policy reject-out-rule-ipv4;
-            then reject;                
+            then reject;
         }
         then reject;
     }
@@ -248,7 +212,7 @@ policy-options {
                 prefix-list-filter aggregated-ipv4 orlonger;
             }
             then accept;
-        }                               
+        }
         term 40 {
             from as-path-group aspath-longer200;
             then accept;
@@ -279,7 +243,7 @@ policy-options {
     }
     as-path-group any {
         as-path any .*;
-    }                                   
+    }
     as-path-group as65550-origin {
         as-path 65550 65550+;
     }
